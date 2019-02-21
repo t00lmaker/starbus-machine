@@ -8,9 +8,15 @@ defmodule PointTest do
 
   doctest Point
 
-  test "should be create for two position (lat, log)." do
+  test "should be create with lat and long." do
     point = Point.changeset(%Point{}, %{lat: 1, long: 2})
     assert point.valid?
+  end
+
+  test "should be create with default values (lat = 0, log = 0)." do
+    point = %Point{}
+    assert point.lat == 0
+    assert point.long == 0
   end
 
   test "should fail if lat is nil" do

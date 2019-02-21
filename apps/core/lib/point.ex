@@ -4,7 +4,7 @@ defmodule Point do
   """
 
   defstruct lat: 0.0, long: 0.0, name: nil
-
+  
   import Ecto.Changeset
 
   @types %{lat: :decimal, long: :decimal, name: :string}

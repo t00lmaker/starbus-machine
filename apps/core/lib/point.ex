@@ -2,16 +2,19 @@ defmodule Point do
   @moduledoc """
       Representação de um ponto no mapa.
   """
-
-  defstruct lat: 0.0, long: 0.0, name: nil
-  
+  use Ecto.Schema
   import Ecto.Changeset
 
-  @types %{lat: :decimal, long: :decimal, name: :string}
+  schema "points" do
+    field :lat,  :string, default: "0.0"
+    field :long, :string, default: "0.0"
+    field :name, :string
+    timestamps()
+  end
 
   @doc false
   def changeset(point, attrs) do
-    {point, @types}
+    point
     |> cast(attrs, [:lat, :long, :name])
     |> validate_required([:lat, :long])
   end

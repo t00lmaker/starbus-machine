@@ -20,23 +20,25 @@ defmodule RouterWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: RouterWeb
+
       import Plug.Conn
-      import RouterWeb.Router.Helpers
       import RouterWeb.Gettext
+      alias RouterWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/router_web/templates",
-                        namespace: RouterWeb
+      use Phoenix.View,
+        root: "lib/router_web/templates",
+        namespace: RouterWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
-      import RouterWeb.Router.Helpers
       import RouterWeb.ErrorHelpers
       import RouterWeb.Gettext
+      alias RouterWeb.Router.Helpers, as: Routes
     end
   end
 

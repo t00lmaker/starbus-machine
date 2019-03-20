@@ -7,6 +7,7 @@ defmodule Route do
 
   schema "routes" do
     field :name,  :string
+    field :info, :string
     belongs_to :user, User
     has_many :points_route, PointRoute
     has_many :points, through: [:points_route, :point]

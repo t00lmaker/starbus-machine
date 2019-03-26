@@ -3,6 +3,7 @@ defmodule AdminWeb.ClientController do
 
   alias Admin.Clients
   alias Admin.Clients.Client
+  alias Router.Client, as: RouteClient
 
   def index(conn, _params) do
     clients = Clients.list_clients()
@@ -17,6 +18,9 @@ defmodule AdminWeb.ClientController do
   def create(conn, %{"client" => client_params}) do
     case Clients.create_client(client_params) do
       {:ok, client} ->
+        
+        RouteClient.create!(client.name)
+
         conn
         |> put_flash(:info, "Client created successfully.")
         |> redirect(to: Routes.client_path(conn, :show, client))

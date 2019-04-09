@@ -49,8 +49,7 @@ defmodule Admin.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:triplex, "~> 1.3.0-rc.1"},
 
-      {:core, in_umbrella: true}, 
-      {:router, in_umbrella: true}
+      {:core, in_umbrella: true}
     ]
   end
 

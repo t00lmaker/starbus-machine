@@ -1,0 +1,23 @@
+language: elixir
+elixir:
+  - 1.6.6
+otp_release:
+  - '20.0'
+addons:
+  postgresql: '9.4'
+
+install:
+  - mix deps.get
+
+env:
+  global:
+    - MIX_ENV=test
+script:
+  - mix compile --all-warnings --warnings-as-errors
+  - mix format --check-formatted --dry-run
+  - mix credo
+  - mix test
+  - mix coveralls.travis
+after_script:
+  - MIX_ENV=docs mix deps.get
+  - MIX_ENV=docs mix inch.report

@@ -1,5 +1,6 @@
 defmodule Starbus.MixProject do
   @moduledoc false
+  
   use Mix.Project
 
   def project do
@@ -7,6 +8,14 @@ defmodule Starbus.MixProject do
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
       deps: deps()
+    ]
+  end
+
+  defp aliases do
+    [
+     "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+     "ecto.reset": ["ecto.drop", "ecto.setup"],
+     "test":       ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 

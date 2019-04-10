@@ -6,7 +6,7 @@ defmodule Route do
   import Ecto.Changeset
 
   schema "routes" do
-    field :name,  :strings
+    field :name,  :string
     field :info, :string
     field :active, :boolean
     belongs_to :user, User

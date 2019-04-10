@@ -8,6 +8,7 @@ defmodule Starbus.MixProject do
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
       deps: deps()
+      test_coverage: [tool: ExCoveralls]]
     ]
   end
 
@@ -26,7 +27,9 @@ defmodule Starbus.MixProject do
   # Run "mix help deps" for examples and options.
   defp deps do
     [
+      
       {:ecto, "~> 3.0"},
+      {:excoveralls, "~> 0.9", only: [:test], runtime: false},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end

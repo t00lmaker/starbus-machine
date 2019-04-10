@@ -18,5 +18,4 @@ script:
   - mix compile --all-warnings --warnings-as-errors
   - mix format --check-formatted --dry-run
   - mix credo
-  - mix test
-  - mix coveralls.travis
+  - mix coveralls.travis --umbrella --verbose

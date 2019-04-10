@@ -9,6 +9,7 @@ defmodule Point do
     field :lat,  :string, default: "0.0"
     field :long, :string, default: "0.0"
     field :name, :string
+    field :info, :string
     timestamps()
   end
 

@@ -17,7 +17,6 @@ defmodule AdminWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-
     resources "/clients", ClientController
   end
 

@@ -1,4 +1,8 @@
 defmodule Admin.Repo.Migrations.CreateClients do
+
+  @moduledoc """
+  Migrate  create Clients
+  """
   use Ecto.Migration
 
   def change do
@@ -10,6 +14,5 @@ defmodule Admin.Repo.Migrations.CreateClients do
 
       timestamps()
     end
-
   end
 end

@@ -11,7 +11,8 @@ defmodule Core.MixProject do
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
       elixir: "~> 1.8.1",
-      aliases: aliases(),
+      aaliases: aliases(),
+      test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]

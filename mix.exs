@@ -8,6 +8,7 @@ defmodule Starbus.MixProject do
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      aliases: aliases(),
       test_coverage: [tool: ExCoveralls]
     ]
   end

@@ -21,7 +21,7 @@ defmodule Starbus.MixProject do
     [
       {:ecto, "~> 3.0"},
       {:excoveralls, "~> 0.9", only: [:test], runtime: false},
-      {:credo, "~> 1.0.4", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end
 end

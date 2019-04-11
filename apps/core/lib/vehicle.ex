@@ -7,8 +7,8 @@ defmodule Vehicle do
   import Ecto.Changeset
 
   schema "vehicles" do
-    field :identify,  :string
-    field :plate, :string
+    field(:identify, :string)
+    field(:plate, :string)
     timestamps()
   end
 
@@ -18,5 +18,4 @@ defmodule Vehicle do
     |> cast(attrs, [:identify, :plate])
     |> validate_required([:identify, :plate])
   end
-
 end

@@ -3,8 +3,18 @@ defmodule AdminWeb.ClientControllerTest do
 
   alias Admin.Clients
 
-  @create_attrs %{active: true, description: "some description", name: "some name", url_logo: "some url_logo"}
-  @update_attrs %{active: false, description: "some updated description", name: "some updated name", url_logo: "some updated url_logo"}
+  @create_attrs %{
+    active: true,
+    description: "some description",
+    name: "some name",
+    url_logo: "some url_logo"
+  }
+  @update_attrs %{
+    active: false,
+    description: "some updated description",
+    name: "some updated name",
+    url_logo: "some updated url_logo"
+  }
   @invalid_attrs %{active: nil, description: nil, name: nil, url_logo: nil}
 
   def fixture(:client) do
@@ -75,6 +85,7 @@ defmodule AdminWeb.ClientControllerTest do
     test "deletes chosen client", %{conn: conn, client: client} do
       conn = delete(conn, Routes.client_path(conn, :delete, client))
       assert redirected_to(conn) == Routes.client_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.client_path(conn, :show, client))
       end

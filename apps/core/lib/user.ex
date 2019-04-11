@@ -7,7 +7,7 @@ defmodule User do
   import Ecto.Changeset
 
   schema "users" do
-    field :name,  :string
+    field(:name, :string)
     timestamps()
   end
 
@@ -17,6 +17,4 @@ defmodule User do
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
-
-
 end

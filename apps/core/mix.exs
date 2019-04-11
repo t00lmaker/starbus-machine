@@ -11,6 +11,7 @@ defmodule Core.MixProject do
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
       elixir: "~> 1.8.1",
+      aliases: aliases(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -23,6 +24,14 @@ defmodule Core.MixProject do
     ]
   end
 
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
@@ -32,5 +41,4 @@ defmodule Core.MixProject do
       # {:sibling_app_in_umbrella, in_umbrella: true},
     ]
   end
-
 end

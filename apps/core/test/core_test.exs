@@ -9,5 +9,4 @@ defmodule CoreTest do
   test "greets the world" do
     assert Core.hello() == :world
   end
-
 end

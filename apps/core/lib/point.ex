@@ -6,10 +6,10 @@ defmodule Point do
   import Ecto.Changeset
 
   schema "points" do
-    field :lat,  :string, default: "0.0"
-    field :long, :string, default: "0.0"
-    field :name, :string
-    field :info, :string
+    field(:lat, :string, default: "0.0")
+    field(:long, :string, default: "0.0")
+    field(:name, :string)
+    field(:info, :string)
     timestamps()
   end
 
@@ -19,5 +19,4 @@ defmodule Point do
     |> cast(attrs, [:lat, :long, :name])
     |> validate_required([:lat, :long])
   end
-
 end

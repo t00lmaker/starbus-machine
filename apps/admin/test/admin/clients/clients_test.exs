@@ -6,8 +6,18 @@ defmodule Admin.ClientsTest do
   describe "clients" do
     alias Admin.Clients.Client
 
-    @valid_attrs %{active: true, description: "some description", name: "some name", url_logo: "some url_logo"}
-    @update_attrs %{active: false, description: "some updated description", name: "some updated name", url_logo: "some updated url_logo"}
+    @valid_attrs %{
+      active: true,
+      description: "some description",
+      name: "some name",
+      url_logo: "some url_logo"
+    }
+    @update_attrs %{
+      active: false,
+      description: "some updated description",
+      name: "some updated name",
+      url_logo: "some updated url_logo"
+    }
     @invalid_attrs %{active: nil, description: nil, name: nil, url_logo: nil}
 
     def client_fixture(attrs \\ %{}) do

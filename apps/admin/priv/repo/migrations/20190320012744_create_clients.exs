@@ -1,5 +1,4 @@
 defmodule Admin.Repo.Migrations.CreateClients do
-
   @moduledoc """
   Migrate  create Clients
   """

@@ -18,7 +18,7 @@ defmodule Starbus.MixProject do
   defp aliases do
     [
       "test.setup": [
-        "cmd MIX_ENV=test mix test.setup"
+        "cmd mix test.setup"
       ],
     ]
   end

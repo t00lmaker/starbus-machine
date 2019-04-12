@@ -11,7 +11,7 @@ defmodule Core.MixProject do
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
       elixir: "~> 1.8.1",
-      aaliases: aliases(),
+      aliases: aliases(),
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -35,9 +35,7 @@ defmodule Core.MixProject do
 
   defp aliases do
     [
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test.setup": ["ecto.reset"]
+      "test.setup": []
     ]
   end
 

@@ -9,7 +9,17 @@ defmodule Starbus.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
+      aliases: aliases(),
       preferred_cli_env: [coveralls: :test]
+    ]
+  end
+
+
+  defp aliases do
+    [
+      "test.setup": [
+        "cmd MIX_ENV=test mix test.setup"
+      ],
     ]
   end
 

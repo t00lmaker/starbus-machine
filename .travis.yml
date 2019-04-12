@@ -15,7 +15,7 @@ env:
   global:
     - MIX_ENV=test
 before_script:
-  - mix ecto.setup
+  - mix test.setup
 script:
   - mix compile --all-warnings --warnings-as-errors
   - mix format --check-formatted --dry-run

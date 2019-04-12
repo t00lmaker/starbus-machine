@@ -18,6 +18,7 @@ script:
   - mix compile --all-warnings --warnings-as-errors
   - mix format --check-formatted --dry-run
   - mix credo
+  - mix ecto.setup
   - mix coveralls.travis --umbrella --verbose
 after_script:
   - MIX_ENV=docs mix deps.get

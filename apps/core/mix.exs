@@ -14,7 +14,15 @@ defmodule Core.MixProject do
       aaliases: aliases(),
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+
+       # Docs
+       name: "Starbus Core",
+       source_url: "https://github.com/USER/PROJECT",
+       homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+       docs: [main: "Starbus Core", # The main page in the docs
+              logo: "",
+              extras: ["README.md"]]
     ]
   end
 
@@ -36,7 +44,8 @@ defmodule Core.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ecto, "~> 3.0"}
+      {:ecto, "~> 3.0"},
+      {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       # {:sibling_app_in_umbrella, in_umbrella: true},

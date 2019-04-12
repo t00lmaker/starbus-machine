@@ -15,7 +15,15 @@ defmodule Admin.MixProject do
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+       # Docs
+       name: "Starbus Admin",
+       source_url: "https://github.com/USER/PROJECT",
+       homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+       docs: [main: "Starbus Admin", # The main page in the docs
+              logo: "",
+              extras: ["README.md"]]
     ]
   end
 
@@ -49,7 +57,7 @@ defmodule Admin.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:triplex, "~> 1.3.0-rc.1"},
-      {:core, in_umbrella: true}
+      {:inch_ex, github: "rrrene/inch_ex", only: [:dev, :test]}
     ]
   end
 

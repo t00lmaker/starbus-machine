@@ -24,5 +24,6 @@ defmodule Starbus.MixProject do
       {:excoveralls, "~> 0.10", only: :test, runtime: false},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:inch_ex, only: :docs}
+    ]
   end
 end

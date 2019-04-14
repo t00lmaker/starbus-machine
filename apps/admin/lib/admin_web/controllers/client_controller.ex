@@ -18,7 +18,8 @@ defmodule AdminWeb.ClientController do
   def create(conn, %{"client" => client_params}) do
     case Clients.create_client(client_params) do
       {:ok, client} ->
-        # RouteClient.create!(client.name)
+
+        Hiker.Tennant.create(client.name)
 
         conn
         |> put_flash(:info, "Client created successfully.")

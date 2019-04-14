@@ -14,6 +14,6 @@ defmodule HikerWeb.RouteView do
     %{id: route.id,
       name: route.name,
       info: route.info,
-      is_active: route.is_active}
+      active: route.active}
   end
 end

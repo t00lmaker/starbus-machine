@@ -11,7 +11,8 @@ defmodule HikerWeb.RouteController do
   end
 
   def create(conn, %{"route" => route_params}) do
-    with {:ok, %Route{} = route} <- Router.create_route(route_params) do
+    client = conn.assigns[:current_tenant]
+    with {:ok, %Route{} = route} <- Router.create_route(route_params, client) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.route_path(conn, :show, route))
@@ -20,22 +21,28 @@ defmodule HikerWeb.RouteController do
   end
 
   def show(conn, %{"id" => id}) do
-    route = Router.get_route!(id)
+    client = conn.assigns[:current_tenant]
+    route = Router.get_route!(id, client)
     render(conn, "show.json", route: route)
   end
 
   def update(conn, %{"id" => id, "route" => route_params}) do
-    route = Router.get_route!(id)
+    client = conn.assigns[:current_tenant]
 
-    with {:ok, %Route{} = route} <- Router.update_route(route, route_params) do
+    route = Router.get_route!(id, client)
+
+    with {:ok, %Route{} = route} <- Router.update_route(route, route_params, client) do
       render(conn, "show.json", route: route)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    route = Router.get_route!(id)
 
-    with {:ok, %Route{}} <- Router.delete_route(route) do
+    client = conn.assigns[:current_tenant]
+
+    route = Router.get_route!(id, client)
+
+    with {:ok, %Route{}} <- Router.delete_route(route, client) do
       send_resp(conn, :no_content, "")
     end
   end

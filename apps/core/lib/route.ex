@@ -18,7 +18,7 @@ defmodule Route do
   @doc false
   def changeset(route, attrs) do
     route
-    |> cast(attrs, [:name, :info])
+    |> cast(attrs, [:name, :info, :active])
     |> validate_required([:name])
   end
 end

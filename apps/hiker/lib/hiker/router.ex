@@ -6,21 +6,6 @@ defmodule Hiker.Router do
   import Ecto.Query, warn: false
   alias Hiker.Repo
 
-  alias Hiker.Router.Route
-
-  @doc """
-  Returns the list of routes.
-
-  ## Examples
-
-      iex> list_routes()
-      [%Route{}, ...]
-
-  """
-  def list_routes do
-    raise "TODO"
-  end
-
   @doc """
   Gets a single route.
 
@@ -32,51 +17,8 @@ defmodule Hiker.Router do
       %Route{}
 
   """
-  def get_route!(id), do: raise "TODO"
-
-  @doc """
-  Updates a route.
-
-  ## Examples
-
-      iex> update_route(route, %{field: new_value})
-      {:ok, %Route{}}
-
-      iex> update_route(route, %{field: bad_value})
-      {:error, ...}
-
-  """
-  def update_route(%Route{} = route, attrs) do
-    raise "TODO"
-  end
-
-  @doc """
-  Deletes a Route.
-
-  ## Examples
-
-      iex> delete_route(route)
-      {:ok, %Route{}}
-
-      iex> delete_route(route)
-      {:error, ...}
-
-  """
-  def delete_route(%Route{} = route) do
-    raise "TODO"
-  end
-
-  @doc """
-  Returns a data structure for tracking route changes.
-
-  ## Examples
-
-      iex> change_route(route)
-      %Todo{...}
-
-  """
-  def change_route(%Route{} = route) do
-    raise "TODO"
+  def get_route!(id, client) do
+    Repo.get(Route, id, prefix: client)
   end
 
   @doc """
@@ -88,25 +30,9 @@ defmodule Hiker.Router do
       [%Route{}, ...]
 
   """
-  def list_routes do
-    Repo.all(Route)
+  def list_routes(client) do
+    Repo.all(Route, prefix: client)
   end
-
-  @doc """
-  Gets a single route.
-
-  Raises `Ecto.NoResultsError` if the Route does not exist.
-
-  ## Examples
-
-      iex> get_route!(123)
-      %Route{}
-
-      iex> get_route!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_route!(id), do: Repo.get!(Route, id)
 
   @doc """
   Creates a route.
@@ -120,10 +46,10 @@ defmodule Hiker.Router do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_route(attrs \\ %{}) do
+  def create_route(attrs \\ %{}, client) do
     %Route{}
     |> Route.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.insert(prefix: client)
   end
 
   @doc """
@@ -138,10 +64,10 @@ defmodule Hiker.Router do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_route(%Route{} = route, attrs) do
+  def update_route(%Route{} = route, attrs, client) do
     route
     |> Route.changeset(attrs)
-    |> Repo.update()
+    |> Repo.update(prefix: client)
   end
 
   @doc """
@@ -156,8 +82,8 @@ defmodule Hiker.Router do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_route(%Route{} = route) do
-    Repo.delete(route)
+  def delete_route(%Route{} = route, client) do
+    Repo.delete(route, prefix: client)
   end
 
   @doc """

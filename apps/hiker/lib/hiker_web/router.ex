@@ -3,6 +3,8 @@ defmodule HikerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug Triplex.ParamPlug, param: :local
   end
 
   scope "/api", HikerWeb do

@@ -14,12 +14,11 @@ defmodule Starbus.MixProject do
     ]
   end
 
-
   defp aliases do
     [
       "test.setup": [
         "cmd mix test.setup"
-      ],
+      ]
     ]
   end
 

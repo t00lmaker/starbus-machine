@@ -16,13 +16,12 @@ defmodule Core.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
-       # Docs
-       name: "Starbus Core",
-       source_url: "https://github.com/USER/PROJECT",
-       homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
-       docs: [main: "Starbus Core", # The main page in the docs
-              logo: "",
-              extras: ["README.md"]]
+      # Docs
+      name: "Starbus Core",
+      source_url: "https://github.com/USER/PROJECT",
+      homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+      # The main page in the docs
+      docs: [main: "Starbus Core", logo: "", extras: ["README.md"]]
     ]
   end
 

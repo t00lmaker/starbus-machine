@@ -17,13 +17,12 @@ defmodule Admin.MixProject do
       aliases: aliases(),
       deps: deps(),
 
-       # Docs
-       name: "Starbus Admin",
-       source_url: "https://github.com/USER/PROJECT",
-       homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
-       docs: [main: "Starbus Admin", # The main page in the docs
-              logo: "",
-              extras: ["README.md"]]
+      # Docs
+      name: "Starbus Admin",
+      source_url: "https://github.com/USER/PROJECT",
+      homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+      # The main page in the docs
+      docs: [main: "Starbus Admin", logo: "", extras: ["README.md"]]
     ]
   end
 

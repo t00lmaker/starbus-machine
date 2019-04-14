@@ -44,7 +44,10 @@ defmodule Hiker.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:triplex, "~> 1.3.0-rc.1"},
+      
+      {:core, in_umbrella: true}
     ]
   end
 
@@ -58,6 +61,7 @@ defmodule Hiker.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test.setup": ["ecto.reset"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end

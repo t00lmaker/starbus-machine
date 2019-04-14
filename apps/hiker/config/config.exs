@@ -15,8 +15,7 @@ config :hiker, HikerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "mCwxj0AIhjBvtmXO/SesMRNIrd7shJ/PyRix/RBOfLmE4AV6wAVk5qYSc+OtB0/+",
   render_errors: [view: HikerWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Hiker.PubSub, adapter: Phoenix.PubSub.PG2],
-  debug_errors: false
+  pubsub: [name: Hiker.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

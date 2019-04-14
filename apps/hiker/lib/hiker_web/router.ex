@@ -7,5 +7,7 @@ defmodule HikerWeb.Router do
 
   scope "/api", HikerWeb do
     pipe_through :api
+
+    resources "/routes", RouteController, except: [:new, :edit]
   end
 end

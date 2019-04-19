@@ -5,7 +5,7 @@ defmodule Router.Repo.Migrations.CreateUser do
     create table(:users) do
       add :uuid, :string
       add :email, :string
-      add :active, :boolean
+      add :active, :boolean, default: true
       timestamps()
     end
     create unique_index(:users, [:email])

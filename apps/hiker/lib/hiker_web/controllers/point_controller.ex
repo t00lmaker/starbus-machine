@@ -6,12 +6,20 @@ defmodule HikerWeb.PointController do
   action_fallback HikerWeb.FallbackController
 
   def index(conn, _params, client) do
-    points = Router.list_points(client)
+    points = Router.list_points(client)   
     render(conn, "index.json", points: points)
   end
 
-  def create(conn, %{"point" => point_params}, client) do
-    with {:ok, %Point{} = point} <- Router.create_point(point_params, client) do
+  def create(conn, %{"route_id"=> route_id, "point" => point_params}, client) do
+    result = %{}
+    if route_id do
+      route = Router.get_route!(route_id, client)
+      result = Router.create_point_route(point_params, route, client)
+    else
+      result = Router.create_point(point_params, client)
+    end
+
+    with {:ok, %Point{} = point} <- result do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.point_path(conn, :show, point))

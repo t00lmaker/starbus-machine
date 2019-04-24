@@ -6,12 +6,12 @@ defmodule Route do
   import Ecto.Changeset
 
   schema "routes" do
-    field(:name, :string)
-    field(:info, :string)
-    field(:active, :boolean)
-    belongs_to(:user, User)
-    has_many(:points_route, PointRoute)
-    has_many(:points, through: [:points_route, :point])
+    field :name, :string
+    field :info, :string
+    field :active, :boolean
+    belongs_to :user, User
+    many_to_many :points, Point, join_through: "points_route"
+
     timestamps()
   end
 

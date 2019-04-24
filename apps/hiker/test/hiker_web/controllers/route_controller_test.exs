@@ -2,7 +2,6 @@ defmodule HikerWeb.RouteControllerTest do
   use HikerWeb.ConnCase
 
   alias Hiker.Router
-  alias Hiker.Router.Route
 
   @create_attrs %{
     info: "some info",

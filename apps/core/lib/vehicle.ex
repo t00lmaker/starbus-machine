@@ -7,8 +7,8 @@ defmodule Vehicle do
   import Ecto.Changeset
 
   schema "vehicles" do
-    field(:identify, :string)
-    field(:plate, :string)
+    field :identify, :string
+    field :plate, :string
     timestamps()
   end
 

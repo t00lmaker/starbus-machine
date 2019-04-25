@@ -155,7 +155,7 @@ defmodule Hiker.Router do
               |> Ecto.Changeset.put_assoc(:points, points)
               |> Repo.update!(prefix: client)
 
-    cList.last(route.points)
+    List.last(route.points)
   end
 
   @doc """

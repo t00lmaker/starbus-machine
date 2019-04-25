@@ -6,8 +6,8 @@ defmodule Router.Repo.Migrations.CreatePoints do
       add :lat, :string
       add :long, :string
       add :name, :string
-      add :type, :string
       add :info, :text
+      add :type, :string
       add :active, :boolean, default: false
       timestamps()
     end

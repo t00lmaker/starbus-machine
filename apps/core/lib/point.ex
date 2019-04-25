@@ -18,7 +18,7 @@ defmodule Point do
   @doc false
   def changeset(point, attrs) do
     point
-    |> cast(attrs, [:lat, :long, :name, :info])
-    |> validate_required([:lat, :long])
+    |> cast(attrs, [:lat, :long, :name, :info, :type, :active])
+    |> validate_required([:lat, :long, :type])
   end
 end

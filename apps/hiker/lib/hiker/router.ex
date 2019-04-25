@@ -2,7 +2,6 @@ defmodule Hiker.Router do
   @moduledoc """
   The Router context.
   """
-  require IEx 
   import Ecto.Query, warn: false
   alias Hiker.Repo
 
@@ -150,10 +149,13 @@ defmodule Hiker.Router do
     route = route |> Repo.preload([:points])
     point = %Point{} |> Point.changeset(attrs)
     points = route.points ++ [point]
-    route
-      |> Ecto.Changeset.change
-      |> Ecto.Changeset.put_assoc(:points, points)
-      |> Repo.update!(prefix: client)
+
+    route = route
+              |> Ecto.Changeset.change
+              |> Ecto.Changeset.put_assoc(:points, points)
+              |> Repo.update!(prefix: client)
+
+    List.last(route.points)
   end
 
   @doc """

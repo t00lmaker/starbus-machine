@@ -82,7 +82,9 @@ defmodule Hiker.Router do
 
   """
   def delete_route(%Route{} = route, client) do
-    Repo.delete(route, prefix: client)
+    route
+    |> Ecto.Changeset.change(%{active: false})
+    |> Repo.update(prefix: client)
   end
 
   @doc """
@@ -109,6 +111,11 @@ defmodule Hiker.Router do
   """
   def list_points(client) do
     Repo.all(Point, prefix: client)
+  end
+
+  def list_points_in(route) do
+    route = route |> Repo.preload([:points])
+    route.points
   end
 
   @doc """
@@ -189,7 +196,9 @@ defmodule Hiker.Router do
 
   """
   def delete_point(%Point{} = point, client) do
-    Repo.delete(point, prefix: client)
+    point
+    |> Ecto.Changeset.change(%{active: false})
+    |> Repo.update(prefix: client)
   end
 
   @doc """

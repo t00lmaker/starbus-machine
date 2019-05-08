@@ -13,7 +13,7 @@ defmodule HikerWeb.Router do
     resources "/points", PointController, except: [:new, :edit]
 
     resources "/routes", RouteController, except: [:new, :edit] do
-      resources "/points", PointController, only: [:create]
+      resources "/points", PointController, only: [:create, :index]
     end
 
   end

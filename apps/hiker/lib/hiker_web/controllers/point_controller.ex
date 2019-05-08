@@ -5,6 +5,12 @@ defmodule HikerWeb.PointController do
 
   action_fallback HikerWeb.FallbackController
 
+  def index(conn, %{"route_id"=> route_id}, client) do
+    route = Router.get_route!(route_id, client)
+    points = Router.list_points_in(route)
+    render(conn, "index.json", points: points)
+  end
+
   def index(conn, _params, client) do
     points = Router.list_points(client)
     render(conn, "index.json", points: points)

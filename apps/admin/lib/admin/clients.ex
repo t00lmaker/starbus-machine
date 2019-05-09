@@ -50,9 +50,9 @@ defmodule Admin.Clients do
 
   """
   def create_client(attrs \\ %{}) do
-    result = %Client{}
+    %Client{}
     |> Client.changeset(attrs)
-    |> Repo.insert() 
+    |> Repo.insert()
   end
 
   @doc """

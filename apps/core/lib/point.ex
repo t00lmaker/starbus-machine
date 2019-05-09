@@ -6,12 +6,12 @@ defmodule Point do
   import Ecto.Changeset
 
   schema "points" do
-    field :lat, :string, default: "0.0"
-    field :long, :string, default: "0.0"
-    field :name, :string
-    field :info, :string
-    field :type, :string
-    field :active, :boolean
+    field(:lat, :string, default: "0.0")
+    field(:long, :string, default: "0.0")
+    field(:name, :string)
+    field(:info, :string)
+    field(:type, :string)
+    field(:active, :boolean)
     timestamps()
   end
 

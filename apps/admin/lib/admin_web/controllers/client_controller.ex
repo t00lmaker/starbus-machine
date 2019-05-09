@@ -18,7 +18,6 @@ defmodule AdminWeb.ClientController do
   def create(conn, %{"client" => client_params}) do
     case Clients.create_client(client_params) do
       {:ok, client} ->
-
         Hiker.Tennant.create(client.name)
 
         conn

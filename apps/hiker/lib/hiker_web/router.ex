@@ -15,6 +15,5 @@ defmodule HikerWeb.Router do
     resources "/routes", RouteController, except: [:new, :edit] do
       resources "/points", PointController, only: [:create, :index]
     end
-
   end
 end

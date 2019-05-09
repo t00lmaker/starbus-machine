@@ -11,7 +11,6 @@ defmodule HikerWeb.RouteController do
   end
 
   def create(conn, %{"route" => route_params}, client) do
-
     with {:ok, %Route{} = route} <- Router.create_route(route_params, client) do
       conn
       |> put_status(:created)
@@ -21,7 +20,6 @@ defmodule HikerWeb.RouteController do
   end
 
   def show(conn, %{"id" => id}, client) do
-
     route = Router.get_route!(id, client)
     render(conn, "show.json", route: route)
   end

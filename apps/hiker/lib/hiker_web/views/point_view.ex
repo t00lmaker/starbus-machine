@@ -11,13 +11,14 @@ defmodule HikerWeb.PointView do
   end
 
   def render("point.json", %{point: point}) do
-    %{id: point.id,
+    %{
+      id: point.id,
       name: point.name,
       info: point.info,
       long: point.long,
       lat: point.lat,
       active: point.active,
-      type: point.type 
+      type: point.type
     }
   end
 end

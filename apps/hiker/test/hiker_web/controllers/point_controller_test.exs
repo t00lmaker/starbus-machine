@@ -11,7 +11,7 @@ defmodule HikerWeb.PointControllerTest do
     name: "some name",
     info: "some info",
     type: "point",
-    active: true,
+    active: true
   }
   @update_attrs %{
     lat: "123.12",
@@ -65,7 +65,9 @@ defmodule HikerWeb.PointControllerTest do
     setup [:create_point]
 
     test "renders point when data is valid", %{conn: conn, point: %Point{id: id} = point} do
-      conn = put(conn, Routes.point_path(conn, :update, point), point: @update_attrs, local: @client)
+      conn =
+        put(conn, Routes.point_path(conn, :update, point), point: @update_attrs, local: @client)
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, Routes.point_path(conn, :show, id), local: @client)
@@ -79,7 +81,9 @@ defmodule HikerWeb.PointControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, point: point} do
-      conn = put(conn, Routes.point_path(conn, :update, point), point: @invalid_attrs, local: @client)
+      conn =
+        put(conn, Routes.point_path(conn, :update, point), point: @invalid_attrs, local: @client)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -90,18 +94,18 @@ defmodule HikerWeb.PointControllerTest do
     test "attr active should be false", %{conn: conn, point: point} do
       conn = delete(conn, Routes.point_path(conn, :delete, point, local: @client))
       assert response(conn, 204)
-      
+
       conn = get(conn, Routes.point_path(conn, :show, point, local: @client))
 
       assert %{
-        "id" => id,
-        "lat" => "123.12",
-        "long" => "321.21",
-        "name" => "some name",
-        "info" => "some info",
-        "type" => "point",
-        "active" => false,
-      } = json_response(conn, 200)["data"]
+               "id" => id,
+               "lat" => "123.12",
+               "long" => "321.21",
+               "name" => "some name",
+               "info" => "some info",
+               "type" => "point",
+               "active" => false
+             } = json_response(conn, 200)["data"]
     end
   end
 

@@ -11,9 +11,6 @@ defmodule HikerWeb.RouteView do
   end
 
   def render("route.json", %{route: route}) do
-    %{id: route.id,
-      name: route.name,
-      info: route.info,
-      active: route.active}
+    %{id: route.id, name: route.name, info: route.info, active: route.active}
   end
 end

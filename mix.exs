@@ -18,6 +18,9 @@ defmodule Starbus.MixProject do
     [
       "test.setup": [
         "cmd mix test.setup"
+      ],
+      test: [
+        "cmd mix test"
       ]
     ]
   end

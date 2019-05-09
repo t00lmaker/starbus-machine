@@ -3,20 +3,22 @@ defmodule HikerWeb.RouteControllerTest do
 
   alias Hiker.Router
 
+  @client "client_test"
+
   @create_attrs %{
+    name: "some name",
     info: "some info",
-    is_active: true,
-    name: "some name"
+    active: true
   }
   @update_attrs %{
+    name: "some updated name",
     info: "some updated info",
-    is_active: false,
-    name: "some updated name"
+    active: true
   }
   @invalid_attrs %{info: nil, is_active: nil, name: nil}
 
   def fixture(:route) do
-    {:ok, route} = Router.create_route(@create_attrs)
+    {:ok, route} = Router.create_route(@create_attrs, @client)
     route
   end
 
@@ -26,28 +28,28 @@ defmodule HikerWeb.RouteControllerTest do
 
   describe "index" do
     test "lists all routes", %{conn: conn} do
-      conn = get(conn, Routes.route_path(conn, :index))
+      conn = get(conn, Routes.route_path(conn, :index), local: @client)
       assert json_response(conn, 200)["data"] == []
     end
   end
 
   describe "create route" do
     test "renders route when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.route_path(conn, :create), route: @create_attrs)
+      conn = post(conn, Routes.route_path(conn, :create), route: @create_attrs, local: @client)
       assert %{"id" => id} = json_response(conn, 201)["data"]
 
-      conn = get(conn, Routes.route_path(conn, :show, id))
+      conn = get(conn, Routes.route_path(conn, :show, id), local: @client)
 
       assert %{
                "id" => id,
                "info" => "some info",
-               "is_active" => true,
+               "active" => true,
                "name" => "some name"
              } = json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.route_path(conn, :create), route: @invalid_attrs)
+      conn = post(conn, Routes.route_path(conn, :create), route: @invalid_attrs, local: @client)
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -56,21 +58,21 @@ defmodule HikerWeb.RouteControllerTest do
     setup [:create_route]
 
     test "renders route when data is valid", %{conn: conn, route: %Route{id: id} = route} do
-      conn = put(conn, Routes.route_path(conn, :update, route), route: @update_attrs)
+      conn = put(conn, Routes.route_path(conn, :update, route), route: @update_attrs, local: @client)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
-      conn = get(conn, Routes.route_path(conn, :show, id))
+      conn = get(conn, Routes.route_path(conn, :show, id), local: @client)
 
       assert %{
                "id" => id,
                "info" => "some updated info",
-               "is_active" => false,
+               "active" => true,
                "name" => "some updated name"
              } = json_response(conn, 200)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn, route: route} do
-      conn = put(conn, Routes.route_path(conn, :update, route), route: @invalid_attrs)
+      conn = put(conn, Routes.route_path(conn, :update, route), route: @invalid_attrs, local: @client)
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -79,12 +81,16 @@ defmodule HikerWeb.RouteControllerTest do
     setup [:create_route]
 
     test "deletes chosen route", %{conn: conn, route: route} do
-      conn = delete(conn, Routes.route_path(conn, :delete, route))
+      conn = delete(conn, Routes.route_path(conn, :delete, route), local: @client)
       assert response(conn, 204)
 
-      assert_error_sent 404, fn ->
-        get(conn, Routes.route_path(conn, :show, route))
-      end
+      conn = get(conn, Routes.route_path(conn, :show, route), local: @client)
+      assert %{
+        "id" => id,
+        "info" => "some info",
+        "active" => false,
+        "name" => "some name"
+      } = json_response(conn, 200)["data"]
     end
   end
 

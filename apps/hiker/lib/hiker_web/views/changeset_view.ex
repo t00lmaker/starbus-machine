@@ -37,7 +37,7 @@ defmodule HikerWeb.ChangesetView do
       %{
         source: %{pointer: "/data/attributes/#{field}"},
         title: title,
-        detail: "#{String.capitalize(field)} #{title}"
+        detail: "#{field} #{title}"
       }
     end)
   end

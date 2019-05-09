@@ -15,6 +15,9 @@ defmodule HikerWeb.PointView do
       name: point.name,
       info: point.info,
       long: point.long,
-      lat: point.lat, }
+      lat: point.lat,
+      active: point.active,
+      type: point.type 
+    }
   end
 end

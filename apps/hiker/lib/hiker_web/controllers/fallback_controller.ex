@@ -12,4 +12,11 @@ defmodule HikerWeb.FallbackController do
     |> put_view(HikerWeb.ErrorView)
     |> render(:"404")
   end
+
+  def call(conn, {:error, changeset}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(HikerWeb.ChangesetView)
+    |> render("error.json", changeset)
+  end
 end

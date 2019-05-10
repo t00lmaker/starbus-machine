@@ -14,13 +14,11 @@ install:
 env:
   global:
     - MIX_ENV=test
-before_script:
-  - mix test.setup
 script:
   - mix compile --all-warnings --warnings-as-errors
   - mix format --check-formatted --dry-run
   - mix credo
-  - mix coveralls.travis --umbrella --verbose
+  - mix coveralls.travis
 after_script:
   - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report

@@ -47,7 +47,8 @@ defmodule Hiker.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:triplex, "~> 1.3.0-rc.1"},
-      {:core, in_umbrella: true}
+      {:core, in_umbrella: true},
+      {:excoveralls, "~> 0.10", only: :test, runtime: false}
     ]
   end
 

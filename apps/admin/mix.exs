@@ -16,7 +16,6 @@ defmodule Admin.MixProject do
       test_coverage: [tool: ExCoveralls],
       aliases: aliases(),
       deps: deps(),
-
       # Docs
       name: "Starbus Admin",
       source_url: "https://github.com/USER/PROJECT",
@@ -56,7 +55,8 @@ defmodule Admin.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:triplex, "~> 1.3.0-rc.1"},
-      {:hiker, in_umbrella: true}
+      {:hiker, in_umbrella: true},
+      {:excoveralls, "~> 0.10", only: :test, runtime: false}
     ]
   end
 

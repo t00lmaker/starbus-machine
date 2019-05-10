@@ -14,6 +14,7 @@ install:
 env:
   global:
     - MIX_ENV=test
+
 script:
   - mix compile --all-warnings --warnings-as-errors
   - mix format --check-formatted --dry-run

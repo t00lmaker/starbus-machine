@@ -54,9 +54,19 @@ defmodule Admin.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      
+      #multi tennaty
       {:triplex, "~> 1.3.0-rc.1"},
-      {:hiker, in_umbrella: true},
+      #coverage report
       {:excoveralls, "~> 0.10", only: :test, runtime: false}
+      #autentication
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
+      {:guardian, "~> 1.0"},
+      #generate uuid
+      {:secure_random, "~> 0.5"}
+      #umbrella apps
+      {:hiker, in_umbrella: true},
     ]
   end
 

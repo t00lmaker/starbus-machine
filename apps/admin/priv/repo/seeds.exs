@@ -9,3 +9,5 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+Admin.Auth.create_user(%{username: "root", password: "r00tStar"})

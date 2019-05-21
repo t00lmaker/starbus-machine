@@ -58,13 +58,13 @@ defmodule Admin.MixProject do
       #multi tennaty
       {:triplex, "~> 1.3.0-rc.1"},
       #coverage report
-      {:excoveralls, "~> 0.10", only: :test, runtime: false}
+      {:excoveralls, "~> 0.10", only: :test, runtime: false},
       #autentication
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:guardian, "~> 1.0"},
       #generate uuid
-      {:secure_random, "~> 0.5"}
+      {:secure_random, "~> 0.5"},
       #umbrella apps
       {:hiker, in_umbrella: true},
     ]

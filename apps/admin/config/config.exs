@@ -32,7 +32,7 @@ import_config "#{Mix.env()}.exs"
 # Configure multenacy 
 config :triplex, repo: Admin.Repo
 
- # Configuração de autenticação com Guardia e JWT.
+# Configuração de autenticação com Guardia e JWT.
 config :admin, Admin.Auth.Guardian,
   issuer: "starbus_admin",
   ttl: {2, :days},

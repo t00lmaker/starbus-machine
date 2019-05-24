@@ -27,5 +27,4 @@ defmodule AdminWeb.AuthController do
   def secret(conn, _) do
     conn |> render("jwt.json", jwt: "OH YES!")
   end
-
 end

@@ -8,5 +8,4 @@ defmodule AdminWeb.AuthView do
   def render("error_msg.json", %{msg: msg}) do
     %{error: msg}
   end
-
 end

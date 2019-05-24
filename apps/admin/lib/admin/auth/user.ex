@@ -1,5 +1,10 @@
 defmodule Admin.Auth.User do
   use Ecto.Schema
+
+  @moduledoc """
+    Manipulação dos dados de usuarios.
+  """
+
   import Ecto.Changeset
 
   alias Comeonin.Bcrypt
@@ -27,10 +32,10 @@ defmodule Admin.Auth.User do
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, password: Bcrypt.hashpwsalt(password))
   end
+
   defp put_pass_hash(changeset), do: changeset
 
   defp put_hashuser(changeset) do
-    put_change(changeset, :uuid, SecureRandom.uuid)
+    put_change(changeset, :uuid, SecureRandom.uuid())
   end
-
 end

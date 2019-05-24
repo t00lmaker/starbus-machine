@@ -8,19 +8,26 @@ defmodule AdminWeb.PageController do
   def index(conn, _params) do
     changeset = Auth.change_user(%User{})
     maybe_user = Guardian.Plug.current_resource(conn)
-    message = if maybe_user != nil do
-      "Someone is logged in"
-    else
-      "No one is logged in"
-    end
+
+    message =
+      if maybe_user != nil do
+        "Someone is logged in"
+      else
+        "No one is logged in"
+      end
+
     conn
-      |> put_flash(:info, message)
-      |> render("index.html", changeset: changeset, action: Routes.page_path(conn, :login), maybe_user: maybe_user)
+    |> put_flash(:info, message)
+    |> render("index.html",
+      changeset: changeset,
+      action: Routes.page_path(conn, :login),
+      maybe_user: maybe_user
+    )
   end
 
   def login(conn, %{"user" => %{"username" => username, "password" => password}}) do
-    Auth.authenticate_user(username, password)
-    |> login_reply(conn)
+    result = Auth.authenticate_user(username, password)
+    login_reply(result, conn)
   end
 
   defp login_reply({:error, error}, conn) do

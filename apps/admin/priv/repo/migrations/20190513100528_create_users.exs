@@ -3,14 +3,13 @@ defmodule Admin.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :username, :string, 
+      add :username, :string
       add :password, :string
       add :uuid, :string
 
       timestamps()
     end
-    
-    create unique_index(:change, [:username, :uuid])
 
+    create unique_index(:change, [:username, :uuid])
   end
 end

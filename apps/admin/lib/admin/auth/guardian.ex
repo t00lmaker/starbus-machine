@@ -19,7 +19,6 @@ defmodule Admin.Auth.Guardian do
   def resource_from_claims(claims) do
     uuid = claims["sub"]
     resource = Repo.get_by(User, uuid: uuid)
-    {:ok,  resource}
+    {:ok, resource}
   end
-
 end

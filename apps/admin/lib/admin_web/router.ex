@@ -52,5 +52,4 @@ defmodule AdminWeb.Router do
 
     get "/secret", AuthController, :secret
   end
-
 end
